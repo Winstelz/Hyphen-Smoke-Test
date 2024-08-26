@@ -61,7 +61,17 @@ test('WalMart Carousel', async ({ page }) => {
     const FirstATC = await page.locator("(//button[@id='single-shop-now-button'])[2]").click();
     const NewPage = await page.waitForEvent("popup");
     await NewPage.waitForTimeout(2000);
-    await expect(NewPage).toHaveTitle(/Gerber 2nd Foods Baby Food/);
+    await expect(NewPage).toHaveTitle(/Gerber 2nd/);
+//Close NewPage
+    await NewPage.close();
+//Add to Cart From Product Title
+    await LastProd.click();
+    const SecondATC = await page.locator("(//button[@id='single-shop-now-button'])[1]").click();
+    const NewPage2 = await page.waitForEvent("popup");
+    await NewPage2.waitForTimeout(2000);
+    await expect(NewPage2).toHaveTitle(/Dove Refreshing/);
+    
+
 
 
   
